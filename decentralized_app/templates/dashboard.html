@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Welcome, {{ request.user.address }} <small><a href="{% url 'user_auth:logout' %}">Logout</a></small></h1>
+
+    <h2>Mail <small><a href="{% url 'mail:inbox' %}">Inbox</a></small></h2>
+    <ul>
+    {% for email in emails %}
+        <li><a href="{% url 'mail:inbox' %}">{{ email.subject }}</a></li>
+    {% empty %}
+        <li>No recent emails.</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Group <small><a href="{% url 'group:group_list' %}">View all</a></small></h2>
+    <ul>
+    {% for group in groups %}
+        <li><a href="{% url 'group:group_chat' group_id=group.id %}">{{ group.name }}</a></li>
+    {% empty %}
+        <li>No groups joined.</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Community <small><a href="{% url 'community:server_list' %}">View all</a></small></h2>
+    <ul>
+    {% for server in servers %}
+        <li><a href="{% url 'community:server_channels' server_id=server.id %}">{{ server.name }}</a></li>
+    {% empty %}
+        <li>No communities joined.</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Social <small><a href="{% url 'social:post_list' %}">View all</a></small></h2>
+    <ul>
+    {% for post in posts %}
+        <li><a href="{% url 'social:post_detail' post_id=post.id %}">{{ post.content|truncatechars:50 }}</a></li>
+    {% empty %}
+        <li>No posts created.</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Message <small><a href="{% url 'message:conversations_list' %}">View all</a></small></h2>
+    <ul>
+    {% for conversation in conversations %}
+        <li>
+            {% if conversation.other_participants %}
+                <a href="{% url 'message:conversation_detail' conversation_id=conversation.id %}">
+                    Conversation with {{ conversation.other_participants.first.address }}
+                </a>
+            {% else %}
+                Conversation with no other participants?
+            {% endif %}
+        </li>
+    {% empty %}
+        <li>No conversations.</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

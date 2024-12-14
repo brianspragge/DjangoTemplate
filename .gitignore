@@ -1,0 +1,32 @@
+# Python
+*.pyc
+*.pyo
+*~
+__pycache__/
+.pytest_cache/
+.coverage
+coverage.xml
+
+# Django
+*.log
+*.pot
+*.sqlite3
+
+# Environment
+.env
+
+# IDEs and Editors
+.vscode/
+.idea/
+
+# Virtual environment
+venv/
+myproject_env/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Other
+*.swp
+*.swo

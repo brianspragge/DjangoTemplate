@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ server.name }} Channels</title>
+</head>
+<body>
+    <h1>{{ server.name }} Channels</h1>
+    <ul>
+    {% for channel in channels %}
+        <li><a href="{% url 'community:channel_chat' channel_id=channel.id %}">{{ channel.name }} {% if channel.is_voice %}(Voice){% endif %}</a></li>
+    {% empty %}
+        <li>No channels yet.</li>
+    {% endfor %}
+    </ul>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Channel</button>
+    </form>
+</body>
+</html>

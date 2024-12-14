@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Detail</title>
+</head>
+<body>
+    <h1>{{ post.content }}</h1>
+    <p>By: {{ post.author.address }}</p>
+    <p>Likes: {{ post.likes.count }} <a href="{% url 'social:like_post' post_id=post.id %}">{% if liked %}Unlike{% else %}Like{% endif %}</a></p>
+
+    <h2>Comments</h2>
+    <ul>
+    {% for comment in comments %}
+        <li>{{ comment.author.address }}: {{ comment.content }}</li>
+    {% empty %}
+        <li>No comments yet.</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Add a Comment</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Comment</button>
+    </form>
+</body>
+</html>

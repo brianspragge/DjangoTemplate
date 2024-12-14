@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ channel.name }} Chat</title>
+</head>
+<body>
+    <h1>{{ channel.name }} Chat</h1>
+    <div>
+        {% for message in messages %}
+            <p><strong>{{ message.author.address }}</strong>: {{ message.content }}</p>
+        {% empty %}
+            <p>No messages yet.</p>
+        {% endfor %}
+    </div>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Send Message</button>
+    </form>
+</body>
+</html>

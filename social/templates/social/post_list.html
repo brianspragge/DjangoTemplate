@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posts</title>
+</head>
+<body>
+    <h1>Latest Posts</h1>
+    <a href="{% url 'social:create_post' %}">New Post</a>
+    <ul>
+    {% for post in posts %}
+        <li>
+            <p>{{ post.author.address }}: {{ post.content }}</p>
+            <p>Likes: {{ post.likes.count }}</p>
+            <a href="{% url 'social:post_detail' post_id=post.id %}">Details</a>
+        </li>
+    {% empty %}
+        <li>No posts yet.</li>
+    {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+</head>
+<body>
+    <form method="get">
+        <input type="text" name="q" value="{{ query }}">
+        <button type="submit">Search</button>
+    </form>
+    {% for key, items in results.items %}
+        <h2>{{ key|capfirst }}</h2>
+        <ul>
+        {% for item in items %}
+            <li>{{ item }}</li>
+        {% empty %}
+            <li>No results.</li>
+        {% endfor %}
+        </ul>
+    {% endfor %}
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Servers</title>
+</head>
+<body>
+    <h1>Your Servers</h1>
+    <ul>
+    {% for server in servers %}
+        <li><a href="{% url 'community:server_channels' server_id=server.id %}">{{ server.name }}</a></li>
+    {% empty %}
+        <li>No servers yet.</li>
+    {% endfor %}
+    </ul>
+    <a href="{% url 'community:create_server' %}">Create New Server</a>
+</body>
+</html>
