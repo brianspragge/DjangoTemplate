@@ -6,15 +6,17 @@
     <title>Conversations</title>
 </head>
 <body>
-    <h1>Your Conversations</h1>
+    <h1>Conversations</h1>
     <ul>
     {% for conversation in conversations %}
         <li>
-            {% if conversation.other_participant_address %}
-                Conversation with {{ conversation.other_participant_address }}
-            {% else %}
-                Conversation with no other participants
-            {% endif %}
+            <a href="{% url 'message:conversation_detail' conversation_id=conversation.id %}">
+                {% if conversation.other_participant_address %}
+                    Conversation with {{ conversation.other_participant_address }}
+                {% else %}
+                    Conversation with no other participants?
+                {% endif %}
+            </a>
         </li>
     {% empty %}
         <li>No conversations yet.</li>

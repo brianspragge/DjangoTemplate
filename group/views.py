@@ -1,8 +1,11 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
+from django.contrib.auth import get_user_model
 from .models import Group, Message
-from .forms import GroupForm, MessageForm  # We'll define these forms next
+from .forms import GroupForm, MessageForm
+
+User = get_user_model()
 
 @login_required
 def create_group(request):

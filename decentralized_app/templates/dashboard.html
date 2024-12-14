@@ -17,33 +17,6 @@
     {% endfor %}
     </ul>
 
-    <h2>Group <small><a href="{% url 'group:group_list' %}">View all</a></small></h2>
-    <ul>
-    {% for group in groups %}
-        <li><a href="{% url 'group:group_chat' group_id=group.id %}">{{ group.name }}</a></li>
-    {% empty %}
-        <li>No groups joined.</li>
-    {% endfor %}
-    </ul>
-
-    <h2>Community <small><a href="{% url 'community:server_list' %}">View all</a></small></h2>
-    <ul>
-    {% for server in servers %}
-        <li><a href="{% url 'community:server_channels' server_id=server.id %}">{{ server.name }}</a></li>
-    {% empty %}
-        <li>No communities joined.</li>
-    {% endfor %}
-    </ul>
-
-    <h2>Social <small><a href="{% url 'social:post_list' %}">View all</a></small></h2>
-    <ul>
-    {% for post in posts %}
-        <li><a href="{% url 'social:post_detail' post_id=post.id %}">{{ post.content|truncatechars:50 }}</a></li>
-    {% empty %}
-        <li>No posts created.</li>
-    {% endfor %}
-    </ul>
-
     <h2>Message <small><a href="{% url 'message:conversations_list' %}">View all</a></small></h2>
     <ul>
     {% for conversation in conversations %}
@@ -58,6 +31,33 @@
         </li>
     {% empty %}
         <li>No conversations.</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Group <small><a href="{% url 'group:group_list' %}">View all</a></small></h2>
+    <ul>
+    {% for group in groups %}
+        <li><a href="{% url 'group:group_chat' group_id=group.id %}">{{ group.name }}</a></li>
+    {% empty %}
+        <li>No groups joined.</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Social <small><a href="{% url 'social:post_list' %}">View all</a></small></h2>
+    <ul>
+    {% for post in posts %}
+        <li><a href="{% url 'social:post_detail' post_id=post.id %}">{{ post.content|truncatechars:50 }}</a></li>
+    {% empty %}
+        <li>No posts created.</li>
+    {% endfor %}
+    </ul>
+
+    <h2>Community <small><a href="{% url 'community:server_list' %}">View all</a></small></h2>
+    <ul>
+    {% for server in servers %}
+        <li><a href="{% url 'community:server_channels' server_id=server.id %}">{{ server.name }}</a></li>
+    {% empty %}
+        <li>No communities joined.</li>
     {% endfor %}
     </ul>
 </body>

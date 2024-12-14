@@ -1,7 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import get_user_model
 from .models import Server, Channel, Message
 from .forms import ServerForm, ChannelForm, MessageForm
+
+User = get_user_model()
 
 @login_required
 def create_server(request):

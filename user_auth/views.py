@@ -24,7 +24,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user, backend='user_auth.backends.AddressBackend')
-            return redirect(reverse('dashboard'))
+            return redirect(reverse('home:dashboard'))
     else:
         form = CustomUserCreationForm()
     return render(request, 'user_auth/register.html', {'form': form})
