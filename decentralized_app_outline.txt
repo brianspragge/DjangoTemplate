@@ -13,9 +13,6 @@ Community: Discord-like with roles, voice channels, moderation bots
 Social: Short posts, community-driven curation
 Message: One-on-one messaging, status indicators
 
-AI Integration:
-AI for unified search and easy posting across platforms
-
 Integration and User Identity:
 Umbrella username or DID for login, SSO across apps, granular permissions
 
